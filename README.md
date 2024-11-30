@@ -6,11 +6,11 @@ Este projeto é um exemplo de aplicação CRUD (Create, Read, Update, Delete) de
 
 ## 🚀 Funcionalidades
 
-- **Criar:** Adicionar novos usuários.
-- **Ler:** Listar todos os usuários cadastrados.
-- **Ler:** Listar um usuário por id.
-- **Atualizar:** Editar informações de usuários existentes.
-- **Deletar:** Remover usuários do banco de dados.
+- **Criar:** Adicionar novas reservas.
+- **Ler:** Listar todos as reservas cadastrados.
+- **Ler:** Listar uma reserva por id.
+- **Atualizar:** Editar informações das reservas existentes.
+- **Deletar:** Remover reserva do banco de dados.
 
 ---
 
@@ -71,37 +71,47 @@ DB_HOST=127.0.0.1
 ### 🔍 Como Usar
 Testar com Insomnia
 
-#### 1. Criar Usuário
-- Endpoint: POST /usuarios
-- URL: http://localhost:3000/usuarios
+#### 1. Criar Reservas
+- Endpoint: POST /reservas
+- URL: http://localhost:3000/reservas
 - Body (JSON):
 - json
 
 ```
 {
-  "nome": "Exemplo",
-  "email": "exemplo@email.com"
+  "cliente_cpf": "545454595",
+  "voo_id": 28,
+  "aeronave_id": 8,
+  "data": "2024-10-12", 
+  "hora": "10:00:00",
+  "assento": 4,
+  "status": true
 }
 ```
 
-#### 2. Listar Usuários
-- Endpoint: GET /usuarios
-- URL: http://localhost:3000/usuarios
+#### 2. Listar Reservas
+- Endpoint: GET /reservas
+- URL: http://localhost:3000/reservas
 
-#### 3. Atualizar Usuário
-- Endpoint: PUT /usuarios/:id
-- URL: http://localhost:3000/usuarios/1
+#### 3. Atualizar Reserva
+- Endpoint: PUT /reservas/:id
+- URL: http://localhost:3000/reservas/1
 - Body (JSON):
 - json
 ```
 {
-  "nome": "Novo Nome",
-  "email": "novo@email.com"
+  "cliente_cpf": "545454595",
+  "voo_id": 28,
+  "aeronave_id": 8,
+  "data": "2024-10-12", 
+  "hora": "10:00:00",
+  "assento": 4,
+  "status": true
 }
 ```
-#### 4. Deletar Usuário
-- Endpoint: DELETE /usuarios/:id
-- URL: http://localhost:3000/usuarios/1
+#### 4. Deletar Reserva
+- Endpoint: DELETE /reservas/:id
+- URL: http://localhost:3000/reservas/1
 
 ### 📂 Estrutura do Projeto
 
