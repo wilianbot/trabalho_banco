@@ -1,46 +1,53 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('./index');   
+'use strict';
 
-const Reserva = sequelize.define('Reserva', {
+module.exports = (sequelize, DataTypes) => {
+  const Reserva = sequelize.define('Reserva', {
     id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
     },
     cliente_cpf: {
-        type: DataTypes.STRING,
-        allowNull: false
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     voo_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
     aeronave_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false    
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
     data: {
-        type: DataTypes.DATE,
-        allowNull: false
+      type: DataTypes.DATE,
+      allowNull: false,
     },
     hora: {
-        type: DataTypes.TIME,
-        allowNull: false
+      type: DataTypes.TIME,
+      allowNull: false,
     },
     assento: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            min: 1,
-            max: 10
-        }
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        min: 1,
+        max: 10,
+      },
     },
     status: {
-        type: DataTypes.STRING,
-        defaultValue: false
-    }
-}, {
-    timestamps: true
-});
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+  }, {
+    timestamps: true,
+    indexes: [
+        {
+        unique: true,
+        fields: ['aeronave_id', 'voo_id', 'assento'],
+        },
+    ],
+  });
 
-modelus.exports = Reserva;
+  return Reserva;
+};

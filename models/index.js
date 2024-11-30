@@ -16,6 +16,7 @@ if (config.use_env_variable) {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
+// Carregar todos os modelos do diretório
 fs
   .readdirSync(__dirname)
   .filter(file => {
@@ -31,6 +32,7 @@ fs
     db[model.name] = model;
   });
 
+// Configurar associações (se existirem)
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);

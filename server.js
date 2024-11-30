@@ -10,6 +10,16 @@ app.use(bodyParser.json());
 // Rotas CRUD
 // Criar uma reserva
 app.post('/reservas', async (req, res) => {
+    const { aeronave_id, voo_id, assento } = req.body;
+
+    const assentoExistente = await Reserva.findOne({ 
+        where: { aeronave_id, voo_id, assento }, 
+    });
+
+    if (assentoExistente) {
+        return res.status(400).json({ error: `Assento ${assento} já esta reservado para este voo.` });
+    }
+
     try {
         const reserva = await Reserva.create(req.body);
         res.json(reserva);
