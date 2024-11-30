@@ -1,55 +1,76 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { Usuario } = require('./models');
+const { Reserva } = require('./models');
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
 // Rotas CRUD
-app.post('/usuarios', async (req, res) => { // Criar um usuário
-    const usuario = await Usuario.create(req.body);
-    res.json(usuario);
-});
-
-app.get('/usuarios', async (req, res) => { // Buscar todos os usuários
-    const usuarios = await Usuario.findAll();
-    res.json(usuarios);
-});
-
-app.get('/usuarios/:id', async (req, res) => { // Buscar usuario por id
-    const usuario = await Usuario.findByPk(req.params.id);
-    if (usuario) {
-        res.json(usuario);
-    } else {
-        res.status(404).json({ error: 'Usuário não encontrado' });
+// Criar uma reserva
+app.post('/reservas', async (req, res) => {
+    try {
+        const reserva = await Reserva.create(req.body);
+        res.json(reserva);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
     }
 });
 
-app.put('/usuarios/:id', async (req, res) => { // Atualizar um usuário por id
-    const usuario = await Usuario.findByPk(req.params.id);
-    if (usuario) {
-        await usuario.update(req.body);
-        res.json(usuario);
-    } else {
-        res.status(404).json({ error: 'Usuário não encontrado' });
+// Buscar todas as reservas
+app.get('/reservas', async (req, res) => {
+    try {
+        const reservas = await Reserva.findAll();
+        res.json(reservas);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
 });
 
-app.delete('/usuarios/:id', async (req, res) => { // Deletar um usuário por id
-    const usuario = await Usuario.findByPk(req.params.id);
-    if (usuario) {
-        await usuario.destroy();
-        res.json({ message: 'Usuário deletado' });
-    } else {
-        res.status(404).json({ error: 'Usuário não encontrado' });
+// Buscar uma reserva por ID
+app.get('/reservas/:id', async (req, res) => {
+    try {
+        const reserva = await Reserva.findByPk(req.params.id);
+        if (reserva) {
+            res.json(reserva);
+        } else {
+            res.status(404).json({ error: 'Reserva não encontrada' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
 });
 
+// Atualizar uma reserva por ID
+app.put('/reservas/:id', async (req, res) => {
+    try {
+        const reserva = await Reserva.findByPk(req.params.id);
+        if (reserva) {
+            await reserva.update(req.body);
+            res.json(reserva);
+        } else {
+            res.status(404).json({ error: 'Reserva não encontrada' });
+        }
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+
+// Deletar uma reserva por ID
+app.delete('/reservas/:id', async (req, res) => {
+    try {
+        const reserva = await Reserva.findByPk(req.params.id);
+        if (reserva) {
+            await reserva.destroy();
+            res.json({ message: 'Reserva deletada' });
+        } else {
+            res.status(404).json({ error: 'Reserva não encontrada' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Iniciar o servidor
 app.listen(3000, () => console.log('Servidor rodando na porta 3000'));
-
-
-// npx sequelize-cli init = Inicializa o sequelize
-// npx sequelize-cli model:generate --name Usuario --attributes nome:string,email:string = Cria um modelo
-// npx sequelize-cli db:migrate = Cria a tabela no banco de dados conforme o modelo
