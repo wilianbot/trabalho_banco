@@ -1,0 +1,86 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #2DAA6C;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #f9f9f9;
+}
+#formulario, #container_listar, #formularioAtualizar, #formularioDeletar {
+    font-family: 'Courier New', Courier, monospace;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 20px;
+}
+
+#fomulario label,
+#formulario input,
+#formulario select {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+#fomularioAtualizar label,
+#formularioAtualizar input,
+#formularioAtualizar select {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+#fomularioDeletar label,
+#formularioDeletar input,
+#formularioDeletar select {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+#formulario input,
+#formulario select {
+    padding: 10px;
+    border: none;
+    border-style: none;
+    outline: none;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+#formularioAtualizar input,
+#formularioAtualizar select {
+    padding: 10px;
+    border: none;
+    border-style: none;
+    outline: none;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+#formularioDeletar input,
+#formularioDeletar select {
+    padding: 10px;
+    border: none;
+    border-style: none;
+    outline: none;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+#btn_enviar, #listarReservas, #btn_atualizar, #btn_deletar {
+    background-color: #2DAA6C;
+    color: #f9f9f9;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Realize sua reserva!</h1>
+    <form id="formulario">
+        <label for="cpf">CPF:</label>
+        <input type="number" name="cpf" placeholder="CPF">
+    
+        <label for="numeroVoo">Numero do Voo:</label>
+        <input type="number" name="numeroVoo" placeholder="Numero do Voo">
+    
+        <label for="numeroAeronave">Numero da Aeronave:</label>
+        <input type="number" name="numeroAeronave" placeholder="Numero da Aeronave">
+    
+        <label for="data">Data:</label>
+        <input type="date" name="data">
+    
+        <label for="hora">Hora:</label>
+        <input type="time" name="hora">
+    
+        <label for="numeroAssento">Numero do Assento:</label>
+        <input type="number" name="numeroAssento" placeholder="Numero do Assento">
+
+        <label for="status">Status:</label>
+        <select name="status">
+            <option value="true">Efetivado</option>
+            <option value="false">Cancelado</option>
+        </select>
+
+        <button type="submit" id="btn_enviar">Enviar</button>
+    </form>
+
+    <h1>Lista das reservas!</h1>
+    <div id="container_listar">
+        <button id="listarReservas">Listar reservas</button>
+        <ul id="reservasList"></ul>
+    </div>
+
+    
+    <h1>Atualizar reserva</h1>
+    <form id="formularioAtualizar">
+        <label for="idReserva">ID da Reserva:</label>
+        <input type="number" name="idReserva" placeholder="ID da Reserva">
+
+        <label for="cpf">CPF:</label>
+        <input type="number" name="cpf" placeholder="CPF">
+
+        <label for="numeroVoo">Numero do Voo:</label>
+        <input type="number" name="numeroVoo" placeholder="Numero do Voo">
+
+        <label for="numeroAeronave">Numero da Aeronave:</label>
+        <input type="number" name="numeroAeronave" placeholder="Numero da Aeronave">
+
+        <label for="data">Data:</label>
+        <input type="date" name="data">
+
+        <label for="hora">Hora:</label>
+        <input type="time" name="hora">
+
+        <label for="numeroAssento">Numero do Assento:</label>
+        <input type="number" name="numeroAssento" placeholder="Numero do Assento">
+
+        <label for="status">Status:</label>
+        <select name="status">
+            <option value="true">Efetivado</option>
+            <option value="false">Cancelado</option>
+        </select>
+        <button type="submit" id="btn_atualizar">Atualizar</button>
+    </form>
+
+    <h1>Deletar reserva</h1>
+    <form id="formularioDeletar">
+        <label for="idReservaDeletar">ID da Reserva:</label>
+        <input type="number" name="idReservaDeletar" placeholder="ID da Reserva">
+        <button type="submit" id="btn_deletar">Deletar</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
